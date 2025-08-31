@@ -32,5 +32,26 @@ def get_all_products():
 
 
 @app.get("/products/{id}")
-def get_product_by_id(product_id: int):
-    return {"product": products[product_id - 1]}
+def get_product_by_id(id: int):
+    for product in products:
+        if product.id == id:
+            return {"product": product}
+    return {"message": "product not found"}
+
+
+@app.post("/products")
+def add_one_product(product: Product):
+    """
+    add a product to the list of products
+    Parameters:
+    - product: a product object:
+        - name: a string
+        - description: a string
+        - price: a float
+        - quantity: an integer
+    Returns:
+    - a dictionary with the message and status
+
+    """
+    products.append(product)
+    return {"message": "product added", "status": "success"}
