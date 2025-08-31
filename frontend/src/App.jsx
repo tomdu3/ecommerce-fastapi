@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useMemo } from "react";
 import axios from "axios";
 import "./App.css";
-import TaglineSection from "./TaglineSection";
+import TaglineSection from "./TaglineSection.jsx";
 
 const api = axios.create({
   baseURL: "http://localhost:8000",
