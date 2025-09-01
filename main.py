@@ -44,6 +44,7 @@ def add_one_product(product: Product):
     add a product to the list of products
     Parameters:
     - product: a product object:
+        - id: an integer
         - name: a string
         - description: a string
         - price: a float
