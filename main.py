@@ -10,8 +10,7 @@ def greet():
 
 
 products = [
-    Product(id=1, name="phone", description="a budget phone",
-            price=20, quantity=99),
+    Product(id=1, name="phone", description="a budget phone", price=20, quantity=99),
     Product(
         id=2, name="laptop", description="a gaming laptop", price=2500, quantity=100
     ),
@@ -55,3 +54,12 @@ def add_one_product(product: Product):
     """
     products.append(product)
     return {"message": "product added", "status": "success"}
+
+
+@app.put("/products")
+def update_product(id: int, product: Product):
+    for i in range(len(products)):
+        if products[i].id == id:
+            products[i] = product
+            return {"message": "product updated", "status": "success"}
+    return {"message": "product not found", "status": "error"}
